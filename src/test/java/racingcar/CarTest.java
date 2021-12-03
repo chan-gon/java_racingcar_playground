@@ -2,8 +2,6 @@ package racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,12 +14,6 @@ public class CarTest {
         car = new Car();
     }
 
-    @ParameterizedTest
-    @CsvSource({"java, true", "mysql, true", "lamborghini, false"})
-    void 자동차_이름_길이_검증(String carName, boolean result) {
-        assertThat(car.carNameLengthCheck(carName)).isEqualTo(result);
-    }
-
     @Test
     void 자동차_이름_쉼표로_구분() {
         String input1 = "java,mysql,bmw";
@@ -32,6 +24,6 @@ public class CarTest {
 
     @Test
     void 시도_회수_검증() {
-        assertThat(car.racingLength(5).length()).isEqualTo(5);
+        assertThat(car.getRacingByLength(5).length()).isEqualTo(5);
     }
 }
