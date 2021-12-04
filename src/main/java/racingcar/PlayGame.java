@@ -14,9 +14,14 @@ public class PlayGame {
     * - 현재 메소드는 두 개 이상 입력하면 하나씩 수행함. 동시에 수행되도록 수정해야 한다.
     * -
     * */
-    public void playGame() {
-        askCarName().stream()
-                .forEach(result -> System.out.println("실행 결과\n" + result + " : " + car.getRacingByLength(askHowMany())));
+
+    public void startRace() {
+        List<String> list = askCarName();
+        int raceCount = askHowMany();
+        System.out.println("실행 결과");
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i) + " : " + car.getRacingByLength(raceCount));
+        }
     }
 
     public List<String> askCarName() {
@@ -24,9 +29,10 @@ public class PlayGame {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.next();
         List<String> carList = new ArrayList<>();
-        if (validator.carNameLengthCheck(input)) {
+/*        if (validator.carNameLengthCheck(input)) {
             carList = car.seperateCarName(input);
-        }
+        }*/
+        carList = car.seperateCarName(input);
         return carList;
     }
 
@@ -36,4 +42,7 @@ public class PlayGame {
         int input = scanner.nextInt();
         return input;
     }
+
+
+
 }
