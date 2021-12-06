@@ -1,36 +1,45 @@
 package racingcar_second.domain;
 
-import java.util.List;
+import racingcar_second.domain.exception.NameLengthException;
+import racingcar_second.domain.exception.NotMoveableException;
 
 public class Car {
     private final int MOVE_THRESHHOLD = 4;
+    private final int MIN_VALUE = 0;
+    private final int MAX_VALUE = 10;
 
-    private Name name;
+    private String name;
     private int position;
-    private int statusNumber;
 
-    public Car() {
-    }
-
-    public Car(Name name, int position, int statusNumber) {
+    public Car(String name) {
+        if (name.length() > 5) {
+            throw new NameLengthException();
+        }
         this.name = name;
-        this.position = position;
-        this.statusNumber = statusNumber;
     }
 
-    public List<String> createNameList(String input) {
-        Name name = new Name();
-        List<String> nameList = name.separateByComma(input);
-        return nameList;
-    }
-
-    public void drive(int input) {
-        if (input >= MOVE_THRESHHOLD) {
-            moveForward();
+    public void moveForward(int randomNumber) {
+        if (isDrivable(randomNumber) && isValidRandom(randomNumber)) {
+            position++;
         }
     }
 
-    public void moveForward() {
-        position++;
+    public boolean isDrivable(int input) {
+        return input >= MOVE_THRESHHOLD;
+    }
+
+    public boolean isValidRandom(int input) {
+        if (input < MIN_VALUE || input > MAX_VALUE) {
+            throw new NotMoveableException();
+        }
+        return input > MIN_VALUE || input < MAX_VALUE;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
     }
 }
