@@ -9,7 +9,8 @@ public class Name {
 
     private String name;
 
-    public Name() {}
+    public Name() {
+    }
 
     public Name(String name) {
         if (name.length() > 5) {
@@ -18,8 +19,7 @@ public class Name {
         this.name = name;
     }
 
-    public List<String> createNameList(String input) {
-        List<String> nameList = Arrays.asList(input.split(","));
-        return nameList;
+    public List<String> separateByComma(String input) {
+        return Arrays.asList(input.trim().split(","));
     }
 }
