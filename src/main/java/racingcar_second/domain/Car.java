@@ -1,5 +1,7 @@
 package racingcar_second.domain;
 
+import racingcar_second.domain.exception.MoveThreshHoldException;
+
 import java.util.List;
 
 public class Car {
@@ -24,7 +26,7 @@ public class Car {
 
     public void drive(int input) {
         if (input < MOVE_THRESHHOLD) {
-            throw new IllegalArgumentException();
+            throw new MoveThreshHoldException();
         }
         if (input >= MOVE_THRESHHOLD) {
             moveForward();

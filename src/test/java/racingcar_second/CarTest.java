@@ -3,6 +3,7 @@ package racingcar_second;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar_second.domain.Car;
+import racingcar_second.domain.exception.MoveThreshHoldException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -27,6 +28,6 @@ public class CarTest {
     void 값이_4이하일때_예외_검증() {
         int input = 3;
         assertThatThrownBy(() -> car.drive(input))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(MoveThreshHoldException.class);
     }
 }
