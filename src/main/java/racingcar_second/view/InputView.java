@@ -1,5 +1,7 @@
 package racingcar_second.view;
 
+import racingcar_second.domain.exception.EmptyCarNameException;
+
 import java.util.Scanner;
 
 public class InputView {
@@ -15,11 +17,23 @@ public class InputView {
 
     public String getAskCarNames() {
         System.out.println(ASK_CAR_NAMES);
+        String carNames = scanner.nextLine();
+        isCarNameEmptyOrNot(carNames);
         return scanner.next();
     }
-    
+
+    private void isCarNameEmptyOrNot(String carNames) {
+        if (carNames.isEmpty()) {
+            throw new EmptyCarNameException();
+        }
+    }
+
     public int getAskHowManyTimes() {
         System.out.println(ASK_HOW_MANY_TIMES);
-        return scanner.nextInt();
+        int counts = scanner.nextInt();
+        if (!scanner.hasNextInt()) {
+            throw new IllegalArgumentException("숫자만 입력해주세요.");
+        }
+        return counts;
     }
 }
