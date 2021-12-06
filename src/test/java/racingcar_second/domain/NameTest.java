@@ -1,4 +1,4 @@
-package racingcar_second;
+package racingcar_second.domain;
 
 import org.junit.jupiter.api.Test;
 import racingcar_second.domain.Name;

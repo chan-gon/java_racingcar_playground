@@ -1,8 +1,7 @@
-package racingcar_second;
+package racingcar_second.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar_second.domain.Car;
 import racingcar_second.domain.exception.MoveThreshHoldException;
 
 import static org.assertj.core.api.Assertions.assertThat;

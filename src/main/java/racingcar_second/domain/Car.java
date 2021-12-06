@@ -1,7 +1,5 @@
 package racingcar_second.domain;
 
-import racingcar_second.domain.exception.MoveThreshHoldException;
-
 import java.util.List;
 
 public class Car {
@@ -9,13 +7,15 @@ public class Car {
 
     private Name name;
     private int position;
+    private int statusNumber;
 
     public Car() {
     }
 
-    public Car(Name name, int position) {
+    public Car(Name name, int position, int statusNumber) {
         this.name = name;
         this.position = position;
+        this.statusNumber = statusNumber;
     }
 
     public List<String> createNameList(String input) {
@@ -25,13 +25,11 @@ public class Car {
     }
 
     public void drive(int input) {
-        if (input < MOVE_THRESHHOLD) {
-            throw new MoveThreshHoldException();
-        }
         if (input >= MOVE_THRESHHOLD) {
             moveForward();
         }
     }
+
     public void moveForward() {
         position++;
     }
