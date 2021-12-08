@@ -10,10 +10,9 @@ public class InputView {
         this.scanner = scanner;
     }
 
-    public String askCarNames() throws NoSuchFieldException {
+    public String askCarNames(){
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String carNames = scanner.nextLine();
-        checkValidCarName(carNames);
         return carNames;
     }
 
@@ -22,12 +21,6 @@ public class InputView {
         int attemptNum = scanner.nextInt();
         checkValidAttemptNum(attemptNum);
         return attemptNum;
-    }
-
-    private void checkValidCarName(String carNames) throws NoSuchFieldException {
-        if (carNames.isEmpty()) {
-            throw new NoSuchFieldException("빈칸을 입력할 수 없습니다.");
-        }
     }
 
     private void checkValidAttemptNum(int attemptNum) {

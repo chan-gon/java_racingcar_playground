@@ -15,13 +15,17 @@ public class Car {
         this.carName = carName;
     }
 
-    public void move(int carPosition) {
-        if (carPosition >= MOVE_THRESHHOLD) {
+    public void move(int carStatusNum) {
+        if (carStatusNum >= MOVE_THRESHHOLD) {
             this.carPosition++;
         }
     }
 
     public int getCarPosition() {
         return carPosition;
+    }
+
+    public String getCarName() {
+        return carName;
     }
 }

@@ -2,10 +2,10 @@ package racingcar_third.view;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class InputViewTest {
 
@@ -19,12 +19,6 @@ public class InputViewTest {
     void 횟수_정상_입력_테스트() {
         InputView inputView = new InputView(new Scanner("2"));
         assertThat(inputView.askAttemptNum()).isEqualTo(2);
-    }
-
-    @Test
-    void 자동차이름_비정상_입력_예외_테스트() {
-        InputView inputView = new InputView(new Scanner(""));
-        assertThatThrownBy(() -> inputView.askCarNames()).isInstanceOf(NoSuchElementException.class);
     }
 
     @Test
