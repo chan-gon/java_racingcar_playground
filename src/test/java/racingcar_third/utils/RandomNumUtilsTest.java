@@ -8,7 +8,7 @@ public class RandomNumUtilsTest {
 
     @Test
     void 랜덤숫자_0에서9_생성() {
-        RandomNumUtil randomNumUtil = new RandomNumUtil();
+        RandomNumUtils randomNumUtil = new RandomNumUtils();
         assertThat(randomNumUtil.generateRandomNum())
                 .isGreaterThan(0)
                 .isLessThan(10);
