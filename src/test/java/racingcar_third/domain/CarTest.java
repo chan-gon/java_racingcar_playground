@@ -21,10 +21,10 @@ public class CarTest {
         assertThat(racingCar.getCarPosition()).isEqualTo(1);
     }
 
-    @Test
+/*    @Test
     void 자동차이름_5글자이상_예외발생() {
         assertThatThrownBy(() -> new RacingCar("java12345")).isInstanceOf(IllegalArgumentException.class);
-    }
+    }*/
 
     @Test
     void 자동차이름_쉼표제거하고_반환() {

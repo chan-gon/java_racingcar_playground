@@ -7,14 +7,14 @@ public class RacingCar {
 
     private static final int MOVE_THRESHHOLD = 4;
 
-    private String carName;
+    private List<String> carName;
     private int carPosition;
 
     public RacingCar() {
     }
 
-    public RacingCar(String carName) {
-        if (carName.length() > 5) {
+    public RacingCar(List<String> carName) {
+        if (carName.size() > 5) {
             throw new IllegalArgumentException();
         }
         this.carName = carName;
@@ -22,21 +22,24 @@ public class RacingCar {
     }
 
     public void move(int carPosition) {
-        if (carPosition >= MOVE_THRESHHOLD) {
+        if (isMovable(carPosition)) {
             this.carPosition++;
         }
     }
 
+    public boolean isMovable(int carPosition) {
+        return carPosition >= MOVE_THRESHHOLD;
+    }
+
     public List<String> createCarList(String input) {
-        return Arrays.asList(input.split(","));
+        this.carName = Arrays.asList(input.split(","));
+        return carName;
     }
 
     public int getCarPosition() {
         return carPosition;
     }
-
-    public String getCarName() {
+    public List<String> getCarName() {
         return carName;
     }
-
 }
