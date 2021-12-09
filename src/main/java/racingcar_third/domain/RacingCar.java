@@ -1,27 +1,26 @@
 package racingcar_third.domain;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.Objects;
 
 public class RacingCar {
 
     private static final int MOVE_THRESHHOLD = 4;
+    private static final int RAND_VALID_LOWER = 0;
+    private static final int RAND_VALID_UPPER = 9;
 
-    private List<String> carName;
+    private String carName;
     private int carPosition;
 
-    public RacingCar() {
-    }
-
-    public RacingCar(List<String> carName) {
-        if (carName.size() > 5) {
+    public RacingCar(String carName) {
+        if (carName.length() > 5) {
             throw new IllegalArgumentException();
         }
         this.carName = carName;
         this.carPosition = 0;
     }
 
-    public void move(int carPosition) {
+    public void moveForward(int carPosition) {
+        checkRandom(carPosition);
         if (isMovable(carPosition)) {
             this.carPosition++;
         }
@@ -31,15 +30,34 @@ public class RacingCar {
         return carPosition >= MOVE_THRESHHOLD;
     }
 
-    public List<String> createCarList(String input) {
-        this.carName = Arrays.asList(input.split(","));
-        return carName;
+    private void checkRandom(int rand) {
+        if (rand < RAND_VALID_LOWER || rand > RAND_VALID_UPPER) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public boolean isSamePosition(RacingCar other) {
+        return this.getCarPosition() == other.getCarPosition();
     }
 
     public int getCarPosition() {
         return carPosition;
     }
-    public List<String> getCarName() {
+
+    public String getCarName() {
         return carName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCar racingCar = (RacingCar) o;
+        return carPosition == racingCar.carPosition && Objects.equals(carName, racingCar.carName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carName, carPosition);
     }
 }
