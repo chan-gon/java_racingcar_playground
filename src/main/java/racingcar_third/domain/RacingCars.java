@@ -33,6 +33,10 @@ public class RacingCars {
         return cars;
     }
 
+    /*
+     * 현재 위치(position)이 가장 높은 객체를 걸러낸 후
+     * isSamePosition으로 걸러낸 객체가 확실히 맞는지 더블체크 한다
+     * */
     public List<RacingCar> getWinners() {
         RacingCar winner = cars.stream()
                 .max(Comparator.comparingInt(RacingCar::getCarPosition))
@@ -42,6 +46,4 @@ public class RacingCars {
                 .filter(car -> car.isSamePosition(winner))
                 .collect(Collectors.toList());
     }
-
-
 }

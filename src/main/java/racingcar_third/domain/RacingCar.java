@@ -5,8 +5,8 @@ import java.util.Objects;
 public class RacingCar {
 
     private static final int MOVE_THRESHHOLD = 4;
-    private static final int RAND_VALID_LOWER = 0;
-    private static final int RAND_VALID_UPPER = 9;
+    private static final int MIN_VALUE = 0;
+    private static final int MAX_VALUE = 9;
 
     private String carName;
     private int carPosition;
@@ -31,7 +31,7 @@ public class RacingCar {
     }
 
     private void checkRandom(int rand) {
-        if (rand < RAND_VALID_LOWER || rand > RAND_VALID_UPPER) {
+        if (rand < MIN_VALUE || rand > MAX_VALUE) {
             throw new IllegalArgumentException();
         }
     }
